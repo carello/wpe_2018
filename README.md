@@ -1,0 +1,1 @@
+### Weekly Python Exercises (Jan 2018)
