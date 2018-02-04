@@ -1,0 +1,21 @@
+# Finds IP address pattern, starts with key word Mgmt: in the data file. Mgmt can be ommitted.
+ip_addr_pattern = re.compile('Mgmt:([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})')
+
+# Set the pattern for matching OSPF routes
+route_pattern = re.compile('^O.{4}([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})')
+
+# This pattern looks for gig 0/0/0/0 not gig 0/0
+gig_pattern = re.compile('(GigabitEthernet)([0-9]\/[0-9]\/[0-9]\/[0-9])')
+
+# Create regular expressions to match interfaces and OSPF
+OSPF_pattern = re.compile('^O')
+intf_pattern = re.compile('(GigabitEthernet)([0-9]\/[0-9])')
+
+
+# Create regular expressions for mtach prefix and routes
+# Starts match on "O" for OSPF and moves ahead 4 spaces
+prefix_pattern = re.compile('^O.{4}([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\/[0-9]{1,2})')
+
+# Find pattern 'via' for next hop
+route_pattern = re.compile('via ([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})')
+
