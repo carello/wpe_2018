@@ -1,9 +1,12 @@
 import paramiko
 from pprint import pprint
 
+user = 'enter username'
+password = 'enter password'
+
 ip_address = '10.91.86.244'
-username = 'admin'
-password = 'A!min567'
+username = user
+password = password
 
 print('--- Attempting connection to {}'.format(ip_address))
 
