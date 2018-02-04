@@ -27,10 +27,10 @@ print('--- Success! connected to: {} '.format(ip_address))
 print('------------------------------------------------------\n')
 
 # Execute some commands
-stdin, stdout, stderr = ssh_client.exec_command('show ip int brief')
+stdin, stdout, stderr = ssh_client.exec_command('show ip route')
 
-output = stdout.readlines()
-data = [line.strip('\n') for line in output]
+#output = stdout.readlines()
+data = [line.strip('\n') for line in stdout.readlines()]
 for d in data:
     print(d)
 
