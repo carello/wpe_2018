@@ -1,4 +1,11 @@
 
+# Print template
+template = '{0:10} {1:10} {2:15} {3:10} {4:10}'
+#    print(template.format("TENANT", "APP_PROFILE", "EPG"))
+#    print(template.format("------", "-----------", "---"))
+#    for rec in data:
+#        print(template.format(*rec))
+
 # --- PART 1 --- #
 print('\n--- PART 1 ---')
 class NetworkDevice1():
@@ -12,10 +19,12 @@ class NetworkDevice1():
 
 def print_device_info1(devices_list):
     print('')
-    print('{0:10} {1:10} {2:15} {3:10} {4:10}'.format('Name', 'OS-type', 'IP Address', 'Username', 'Password'))
+    #print('{0:10} {1:10} {2:15} {3:10} {4:10}'.format('Name', 'OS-type', 'IP Address', 'Username', 'Password'))
+    print(template.format('Name', 'OS-type', 'IP Address', 'Username', 'Password'))
     print('-' * 55)
     for device in devices_list:
-        print('{0:10} {1:10} {2:15} {3:10} {4:10}'.format(device.name, device.os_type, device.ip_address, device.username, device.password))
+        print(template.format(device.name, device.os_type, device.ip_address, device.username, device.password))
+
     print('')
 
 

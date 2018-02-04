@@ -1,6 +1,13 @@
 from pprint import pprint
 import sys
 
+
+template = "{0:10} {1:10} {2:20} {3:20}"
+#    print(template.format("TENANT", "APP_PROFILE", "EPG"))
+#    print(template.format("------", "-----------", "---"))
+#    for rec in data:
+#        print(template.format(*rec))
+
 devices_list = list()
 
 index = 0
@@ -9,13 +16,13 @@ with open('devices.txt', 'r') as f:
         device_info_list = fl.split(',')
         devices_list.append(device_info_list)
 
-    print('{0:10} {1:10} {2:20} {3}'.format('Name', 'OS_Type', 'Software', 'IP Address'))
-    print('-------------------------------------------------------')
+    print(template.format('Name', 'OS_Type', 'Software', 'IP Address'))
+    print('-' * 70)
 
     ip_addresses = set()
 
     for item in devices_list:
-        print('{0:10} {1:10} {2:20} {3}'.format(item[0], item[1], item[2], item[3]), end='')
+        print(template.format(*item), end='')
         if item[3] in ip_addresses:
             print("\t*DUP*")
             continue
