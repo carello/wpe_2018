@@ -2,8 +2,8 @@ import paramiko
 import sys
 from pprint import pprint
 
-user = 'username'
-password = 'pw'
+user = 'chet'
+password = 'letmein'
 
 cisco_command = "show ip route summary"
 

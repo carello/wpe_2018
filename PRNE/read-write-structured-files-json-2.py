@@ -1,11 +1,15 @@
 import paramiko
+import csv
+import json
+from pprint import pprint
 
 class NetworkDevice():
-    def __init__(self, name, ip, user='chet', pw='letmein'):
+    def __init__(self, name, ip, user='9cisco', pw='9cisco'):
         self.name = name
         self.ip_address = ip
         self.username = user
         self.password = pw
+        self.os_type = 'ios'
 
     def connect(self):
         self.session = None
@@ -14,7 +18,7 @@ class NetworkDevice():
         self.interfaces = '--- Base Device, does not know how to get interfaces ---'
 
 class NetworkDeviceIOS(NetworkDevice):
-    def __init__(self, name, ip, user='chet', pw='letmein'):
+    def __init__(self, name, ip, user='9cisco', pw='9cisco'):
         NetworkDevice.__init__(self, name, ip, user, pw)
 
     def connect(self):
@@ -31,37 +35,39 @@ class NetworkDeviceIOS(NetworkDevice):
                                 password=self.password)
 
     def get_interfaces(self):
-        stdin, stdout, stderr = self.ssh_client.exec_command('show ip interface brief')
+        stdin, stdout, stderr = self.ssh_client.exec_command('show vlan summary')
         self.interfaces = [line.strip('\n') for line in stdout.readlines()]
 
 
 #======================================================================
 def read_devices_info(devices_file):
 
-    devices_list = []
+    dev_list = []
 
-    file = open(devices_file,'r')
-    for line in file:
+    json_file = open(devices_file,'r')
+    json_device_data = json_file.read()
+    devices_info_list = json.loads(json_device_data)
 
-        device_info = line.strip().split(',')
+
+    for device_info in devices_info_list:
 
         # Create a device object with this data
-        if device_info[1] == 'ios':
+        if device_info['os'] == 'ios':
 
-            device = NetworkDeviceIOS(device_info[0],device_info[2],
-                                      device_info[3],device_info[4])
+            device = NetworkDeviceIOS(device_info['name'],device_info['ip'],
+                                      device_info['user'],device_info['password'])
 
-        elif device_info[1] == 'ios-xr':
-
-            device = NetworkDeviceXR(device_info[0],device_info[2],
-                                     device_info[3],device_info[4])
+        elif device_info['os'] == 'ios-xr':
+            device = NetworkDeviceXR(device_info['name'],device_info['ip'],
+                                     device_info['user'],device_info['password'])
 
         else:
-            device = NetworkDevice(device_info[0],device_info[2],
-                                   device_info[3],device_info[4])
+            device = NetworkDevice(device_info['name'],device_info['ip'],
+                                   device_info['user'],device_info['password'])
 
-        devices_list.append(device)
-    return devices_list
+        dev_list.append(device)
+
+    return dev_list
 
 
 def print_device_info(device):
@@ -81,11 +87,31 @@ def print_device_info(device):
         print(item)
 
 
-# main section
-devices_list = read_devices_info('n9k.txt')
+def write_devices_info(devices_file, devices_list):
+    print('--- Printing JSON output---')
+    devices_out_list = list()
+    for dev in devices_list:
+        dev_info = {'name': dev.name, 'ip': dev.ip_address, 'os': dev.os_type, 'user': dev.username, 'password': dev.password}
+        devices_out_list.append(dev_info)
 
+    json_device_data = json.dumps(devices_out_list)
+
+    with open(devices_file, 'w') as json_file:
+        json_file.write(json_device_data)
+
+
+
+
+
+
+
+
+# main section
+devices_list = read_devices_info('devices.json')
+print('working...')
 for device in devices_list:
     session = device.connect()
     device.get_interfaces()
     print_device_info(device)
 
+write_devices_info('json-devices-out.json', devices_list)
