@@ -1,8 +1,11 @@
 import paramiko
+import sys
 from pprint import pprint
 
-user = 'enter username'
-password = 'enter password'
+user = 'username'
+password = 'pw'
+
+cisco_command = "show ip route summary"
 
 ip_address = '10.91.86.244'
 username = user
@@ -16,20 +19,17 @@ ssh_client = paramiko.SSHClient()
 ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
 # Make the connection to our host.
-ssh_client.connect(hostname=ip_address,
-                   username=username,
-                   password=password)
+try:
+    ssh_client.connect(hostname=ip_address, username=username, password=password)
+    # Execute some commands
 
-# If there is an issue, paramiko will throw an exception,
-# so the SSH request must have succeeded.
+except Exception as e:
+    sys.stderr.write("\n--- SSH connection error: {} ---".format(e))
 
-print('--- Success! connected to: {} '.format(ip_address))
+
 print('------------------------------------------------------\n')
 
-# Execute some commands
-stdin, stdout, stderr = ssh_client.exec_command('show ip route')
-
-#output = stdout.readlines()
+stdin, stdout, stderr = ssh_client.exec_command(cisco_command)
 data = [line.strip('\n') for line in stdout.readlines()]
 for d in data:
     print(d)
