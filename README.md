@@ -11,3 +11,5 @@ log_filtering - log parsing solution using class and with filtering capabilties.
 PRNE - coding examples from Cisco PRNE class
 
 csv_solution - working with raw json data, convert into csv files.
+
+nested_comprehensions - working with nested list and set comprehensions.

@@ -72,7 +72,7 @@ for route in routes_list:
         if intf_match:
             intf = intf_match.group(2) # get the interface from the match
             if intf not in intf_routes:  # If route list not yet created, do so now
-                intf_routes[intf] = []
+                intf_routes[intf] = []  # Creates a list for the value!
 
             # Extract the prefix (destination IP address/subnet)
             prefix_match = prefix_pattern.search(route)
