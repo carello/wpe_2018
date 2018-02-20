@@ -1,6 +1,7 @@
 import re
 import operator
 import arrow
+from pprint import pprint
 
 
 class LogDicts(object):
@@ -13,15 +14,13 @@ class LogDicts(object):
     def dicts(self, key=None):
         return list(self.iterdicts(key=key))
 
-
     def iterdicts(self, key=None):
         if key:
             return (item
-                for item in sorted(self._dicts, key=key))
+                    for item in sorted(self._dicts, key=key))
         else:
             return (item
                     for item in self._dicts)
-
 
     def line_to_dict(self, line):
         regexp = '''
@@ -73,12 +72,26 @@ class LogDicts(object):
                 if text in d['request']]
 
 
-id = LogDicts('mini-access-log2.txt')
-
-#print(id.dicts(key=operator.itemgetter('request'))[0])
+id = LogDicts('mini-access-log.txt')
+print('\n======== LOG FILTERING ========')
+print('=' * 120)
+print('\n--- Retrieve first entry in data file based on request being true ---\n')
+print(id.dicts(key=operator.itemgetter('request'))[0])
+print('-' * 120)
+print('\n--- Retrieve last entry in data file based on request being true ---\n')
 #print(list(id.iterdicts(key=operator.itemgetter('REQUEST')))[0])
-#print(list(id.iterdicts(key=operator.itemgetter('REQUEST')))[-1])
-#print(id.for_ip('66.249.71.65'))
-#print(id.for_request('/robots.txt'))
-#print(id.earliest())
-#print(id.latest())
+print(list(id.iterdicts(key=operator.itemgetter('request')))[-1])
+print('-' * 120)
+print('\n--- Retrieve IP for example: 66.249.71.65 ---\n')
+pprint(id.for_ip('66.249.71.65'))
+print('-' * 120)
+print('\n--- Retrieve based on request being "/robots.txt" ---\n')
+pprint(id.for_request('/robots.txt'))
+print('-' * 120)
+print('\n--- Retrieve based on earliest timestamp ---\n')
+print(id.earliest())
+print('-' * 120)
+print('\n--- Retrieve based on latest timestamp ---\n')
+print(id.latest())
+print('-' * 120)
+print()
