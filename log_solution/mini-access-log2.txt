@@ -1,0 +1,2 @@
+67.218.116.165 - - [30/Jan/2010:00:03:18 +0200] "GET /robots.txt HTTP/1.0" 200 99 "-" "Mozilla/5.0 (Twiceler-0.9 http://www.cuil.com/twiceler/robot.html)"
+66.249.71.65 - - [30/Jan/2010:00:12:06 +0200] "GET /browse/one_node/1557 HTTP/1.1" 200 39208 "-" "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"

@@ -30,8 +30,9 @@ def re_line_to_dict(line):
 
 
 def logtolist(datafile):
-    return [re_line_to_dict(line)
-            for line in open(datafile)]
+    # using generator comprehension, instead of list comprehension. output is the same, just more efficient
+    return (re_line_to_dict(line)
+            for line in open(datafile))
 
 
 for one_item in logtolist(filename):
