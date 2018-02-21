@@ -96,19 +96,26 @@ class LogDicts(object):
                 if text in d['request']]
 
 
-ld = LogDicts('mini-access-log.txt')
+ld = LogDicts('mini-access-log2.txt')
 
 print()
 print('\n*** LOG FILTERING ***')
 print('=' * 120)
 
-print('\n--- Retrieve first entry in data file based on request being true ---\n')
+
+print('\n--- Retrieve first entry in data file based on request being true,'
+      '(note order is changed due to list(self.iterdicts) ---\n')
 print(ld.dicts(key=operator.itemgetter('request'))[0])
 print('-' * 120)
 
-print('\n--- Retrieve last entry in data file based on request being true ---\n')
-# recall that 'iterdicts' is a generator returning an iterable, so we need 'list' to view this
+print('\n--- Retrieve last entry in data file based on request being true,'
+      '(note order is changed due to list(self.iterdicts)---\n')
 print(list(ld.iterdicts(key=operator.itemgetter('request')))[-1])
+print('-' * 120)
+
+# recall that 'iterdicts' is a generator returning an iterable, so we need 'list' to view this
+print('\n--- Retrieve list dicts using interdicts, note that order is now changed from original file ---\n')
+pprint(list(ld.iterdicts(key=operator.itemgetter('request'))))
 print('-' * 120)
 
 print('\n--- Retrieve IP for example: 66.249.71.65 ---\n')
