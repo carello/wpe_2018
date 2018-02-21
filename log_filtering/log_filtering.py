@@ -24,7 +24,7 @@ class LogDicts(object):
         self._dicts = [self.line_to_dict(line)
                        for line in open(filename)]
 
-    # Break things down to IP Address, timestamp and request
+    # Break things down to IP Address, timestamp and request. return a dictionary
     def line_to_dict(self, line):
         regexp = '''
                     ((?:\d{1,3}\.){3}\d{1,3})       # IP addresses contain four numbers (each with 1-3 digits)
