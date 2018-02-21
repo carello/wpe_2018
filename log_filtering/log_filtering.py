@@ -107,6 +107,7 @@ print(ld.dicts(key=operator.itemgetter('request'))[0])
 print('-' * 120)
 
 print('\n--- Retrieve last entry in data file based on request being true ---\n')
+# recall that 'iterdicts' is a generator returning an iterable, so we need 'list' to view this
 print(list(ld.iterdicts(key=operator.itemgetter('request')))[-1])
 print('-' * 120)
 
