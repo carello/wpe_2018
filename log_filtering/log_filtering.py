@@ -15,6 +15,7 @@ from pprint import pprint
 # The 'key' parameter is for the ability to sort the resulting list of dictionaries.
 #
 
+
 class LogDicts(object):
     ts_format = 'DD/MMM/YYYY:HH:mm:ss Z'
 
@@ -22,19 +23,6 @@ class LogDicts(object):
     def __init__(self, filename):
         self._dicts = [self.line_to_dict(line)
                        for line in open(filename)]
-
-    # Return a list of all dicts, key is for sorting. This method just calls interdicts method out of convenience.
-    def dicts(self, key=None):
-        return list(self.iterdicts(key=key))
-
-    # Return a iterator of dicts, use a generator expression. Key is for sorting
-    def iterdicts(self, key=None):
-        if key:
-            return (item
-                    for item in sorted(self._dicts, key=key))
-        else:
-            return (item
-                    for item in self._dicts)
 
     # Break things down to IP Address, timestamp and request
     def line_to_dict(self, line):
@@ -62,6 +50,19 @@ class LogDicts(object):
                   'request': request}
         return output
 
+    # Return a list of all dicts, key is for sorting. This method just calls interdicts method out of convenience.
+    def dicts(self, key=None):
+        return list(self.iterdicts(key=key))
+
+    # Return a iterator of dicts, use a generator expression. Key is for sorting
+    def iterdicts(self, key=None):
+        if key:
+            return (item
+                    for item in sorted(self._dicts, key=key))
+        else:
+            return (item
+                    for item in self._dicts)
+
     # Return dict with earliest timestamp. We need to turn timestamp into an object that we can compare
     def earliest(self):
         return min(self._dicts,
@@ -78,7 +79,6 @@ class LogDicts(object):
             key = lambda d: 1
             # this is trick for python3; we can't compare dicts with 'and.
             # If we get a 'None' key, we use a function that returns 1.
-
 
         return [d
                 for d in sorted(self._dicts, key=key)
@@ -97,11 +97,12 @@ class LogDicts(object):
 
 
 ld = LogDicts('mini-access-log.txt')
-print('\n======== LOG FILTERING ========')
+
+print()
+print('\n*** LOG FILTERING ***')
 print('=' * 120)
 
 print('\n--- Retrieve first entry in data file based on request being true ---\n')
-print()
 print(ld.dicts(key=operator.itemgetter('request'))[0])
 print('-' * 120)
 
