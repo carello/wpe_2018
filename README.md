@@ -15,3 +15,5 @@ csv_solution - working with raw json data, convert into csv files.
 nested_comprehensions - working with nested list and set comprehensions.
 
 wedding_planner - using class and namedtuple. Complex project
+
+directory_solution - parse directory and check file length, return success/fail dictionaries
