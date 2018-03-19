@@ -19,3 +19,5 @@ wedding_planner - using class and namedtuple. Complex project
 directory_solution - parse directory and check file length, return success/fail dictionaries
 
 multiziperator - solution to make different sized lists and zip / interate print out
+
+tee_solution - write output to stdout and multiple files at the same time.
