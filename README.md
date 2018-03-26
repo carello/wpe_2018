@@ -21,3 +21,5 @@ directory_solution - parse directory and check file length, return success/fail 
 multiziperator - solution to make different sized lists and zip / interate print out
 
 tee_solution - write output to stdout and multiple files at the same time.
+
+hashing - obtain MD5 of file in a directory
