@@ -25,3 +25,26 @@ tee_solution - write output to stdout and multiple files at the same time.
 hashing - obtain MD5 of file in a directory
 
 get_history - create class to keep values using property
+
+checkpickle - using Pickle using a small address book
+
+all_word_count - experiment using threads* (not complete)
+
+threshold_equal - create a class with a forgiving equality comparison
+
+magic_tuples - create an interator of tuples
+
+formatted_cart - using print format templates
+
+password_checker - take a password and check if it meets criteria. Uses nested functions
+
+head_tail - using argparse to view head/tail of a file
+
+itemgetter - revisit itemgetter, using sort, uses nested functions
+
+once_per_minute - create a decorator when applied to a function would ensure that the function can be called no more than once per minute
+
+str_range - create an iterator to go over a range of strings
+
+percentage - looking into descriptors
+
