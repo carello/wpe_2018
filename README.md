@@ -52,4 +52,4 @@ serial_mix - use mixin classes for pickle, xml, json and csv
 
 better_repr - create class with better repr output
 
-
+abstract_payment - working with abstract base class
