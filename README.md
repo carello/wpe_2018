@@ -48,3 +48,7 @@ str_range - create an iterator to go over a range of strings
 
 percentage - looking into descriptors
 
+serial_mix - use mixin classes for pickle, xml, json and csv
+
+
+
