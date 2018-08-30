@@ -58,3 +58,4 @@ uniquish - checking to see if dicts/sets are hashable
 
 tamperfind - walk a dir and create sha on all files with time stamp to see if they've been tampered with.
 
+tampersave - continuation from tamperfind using classes
