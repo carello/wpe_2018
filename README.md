@@ -53,3 +53,8 @@ serial_mix - use mixin classes for pickle, xml, json and csv
 better_repr - create class with better repr output
 
 abstract_payment - working with abstract base class
+
+uniquish - checking to see if dicts/sets are hashable
+
+tamperfind - walk a dir and create sha on all files with time stamp to see if they've been tampered with.
+
