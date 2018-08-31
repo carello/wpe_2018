@@ -65,3 +65,5 @@ tamperserve - basic flask part 1
 tamperserve3 - client server of tampersave
 
 betterrepr - using decorator to accept arguments in context of functions
+
+mypy_payment - using mypy for type checking
