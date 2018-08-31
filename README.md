@@ -61,3 +61,5 @@ tamperfind - walk a dir and create sha on all files with time stamp to see if th
 tampersave - continuation from tamperfind using classes. pre26.1.py example is most complete
 
 tamperserve - basic flask part 1
+
+tamperserve3 - client server of tampersave
