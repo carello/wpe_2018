@@ -63,3 +63,5 @@ tampersave - continuation from tamperfind using classes. pre26.1.py example is m
 tamperserve - basic flask part 1
 
 tamperserve3 - client server of tampersave
+
+betterrepr - using decorator to accept arguments in context of functions
