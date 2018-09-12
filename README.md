@@ -67,3 +67,5 @@ tamperserve3 - client server of tampersave
 betterrepr - using decorator to accept arguments in context of functions
 
 mypy_payment - using mypy for type checking
+
+tr - unix util style translation of strings
