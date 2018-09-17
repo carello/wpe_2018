@@ -69,3 +69,5 @@ betterrepr - using decorator to accept arguments in context of functions
 mypy_payment - using mypy for type checking
 
 tr - unix util style translation of strings
+
+beautifulsoup - parse html and compare words to local word dictionary
