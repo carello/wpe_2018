@@ -71,3 +71,5 @@ mypy_payment - using mypy for type checking
 tr - unix util style translation of strings
 
 beautifulsoup - parse html and compare words to local word dictionary
+
+zip_tar - working with tar files converted to zip
