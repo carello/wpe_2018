@@ -19,6 +19,11 @@ tar_list = ['foo.tar', 'bar.tar.gz', 'baz.tar.bz2', 'combo.tar', 'combo2.tar']
 
 
 def tar_to_zip(filenames):
+    """
+    this is to create a tart to zip file
+    :param filenames:
+    :return:
+    """
     for one_filename in filenames:
         zip_name = os.path.join(os.path.dirname(one_filename), os.path.basename(one_filename).split('.')[0])
         try:
@@ -35,6 +40,11 @@ def tar_to_zip(filenames):
 
 
 def read_zip(read_con):
+    """
+    this is to read zip files.
+    :param read_con:
+    :return:
+    """
     print(CWHITE + "--> Reading zippy files..." + CEND)
     only_files = [f for f in os.listdir(read_con) if os.path.isfile(os.path.join(read_con, f))]
     for zipped_file in only_files:
