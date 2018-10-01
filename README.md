@@ -73,3 +73,5 @@ tr - unix util style translation of strings
 beautifulsoup - parse html and compare words to local word dictionary
 
 zip_tar - working with tar files converted to zip
+
+immutable_me - create class, define vars with init and make immutable when change attempted.
