@@ -79,3 +79,5 @@ immutable_me - create class, define vars with init and make immutable when chang
 tcp-client-server : simple tcp socket program
 
 socket-file: tcp socket program. Server reads functions in from disk at client requests
+
+appointments-sql: using sqlite3 with python
