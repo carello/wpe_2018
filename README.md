@@ -81,3 +81,5 @@ tcp-client-server : simple tcp socket program
 socket-file: tcp socket program. Server reads functions in from disk at client requests
 
 appointments-sql: using sqlite3 with python
+
+appointment-holiday: using sqlite, identify holidays
