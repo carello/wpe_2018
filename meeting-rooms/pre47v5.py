@@ -39,10 +39,10 @@ class MeetingRoom(object):
         for one_meeting in self.meetings:
             if new_meeting in one_meeting:
                 raise MeetingRoomTakenException(
-                    f'There is already a meeting from {one_meeting.starts_at} to {one_meeting.ends_at}')
+                    f'There is already a meeting from {one_meeting.starts_at} '
+                    f'to {one_meeting.ends_at}')
         self.meetings.append(new_meeting)
 
-    # not sure what this is doing  - if anything...
     def __repr__(self):
         return '\n'.join([f"[{index}: {one_meeting}]"
                           for index, one_meeting in enumerate(self.meetings)])
@@ -69,9 +69,12 @@ class MeetingRoom(object):
     @staticmethod
     def view():
         my_list = defaultdict(list)
-        for mr in MeetingRoom.get_instances():
-            for meet in mr.meetings:
-                my_list[mr.name].append(meet)
+        #for mr in MeetingRoom.get_instances():
+        #    for meet in mr.meetings:
+        #        my_list[mr.name].append(meet)
+
+        [my_list[mr.name].append(meet) for mr in MeetingRoom.get_instances()
+         for meet in mr.meetings]
 
         for room, val in sorted(my_list.items()):
             print("ROOM: {}".format(room))
