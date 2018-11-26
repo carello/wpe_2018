@@ -3,6 +3,9 @@
 from collections import defaultdict
 import arrow
 import weakref
+import operator
+from datetime import datetime
+from datetime import timedelta
 
 
 class MeetingRoomTakenException(Exception):
@@ -21,7 +24,7 @@ class Meeting(object):
             return True
 
     def __repr__(self):
-        return f"Meeting from {self.starts_at} to {self.ends_at}"
+        return f"{self.starts_at} to {self.ends_at}"
 
 
 class MeetingRoom(object):
@@ -49,14 +52,14 @@ class MeetingRoom(object):
 
     @classmethod
     def get_instances(cls):
-        dead = list()
+        room_instance = list()
         for ref in cls._instances:
             obj = ref()
             if obj is not None:
                 yield obj
             else:
-                dead.append(ref)
-        cls._instances += dead
+                room_instance.append(ref)
+        cls._instances += room_instance
 
     @staticmethod
     def display2():
@@ -71,15 +74,15 @@ class MeetingRoom(object):
         my_list = defaultdict(list)
         #for mr in MeetingRoom.get_instances():
         #    for meet in mr.meetings:
-        #        my_list[mr.name].append(meet)
+        #        my_list[mr.name].append(str(meet))
 
-        [my_list[mr.name].append(meet) for mr in MeetingRoom.get_instances()
+        [my_list[mr.name].append(str(meet)) for mr in MeetingRoom.get_instances()
          for meet in mr.meetings]
 
         for room, val in sorted(my_list.items()):
             print("ROOM: {}".format(room))
-            for one_item in val:
-                print("\tEVENT: {}".format(one_item))
+            for one_item in sorted(val):
+                print("\tMEETING: {}".format(one_item))
             print()
 
 
