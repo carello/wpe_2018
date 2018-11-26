@@ -24,7 +24,7 @@ class Meeting(object):
             return True
 
     def __repr__(self):
-        return f"{self.starts_at} to {self.ends_at}"
+        return f"{self.starts_at.format('YYYY-MM-DD HH:mm')} to {self.ends_at.format('HH:mm')}"
 
 
 class MeetingRoom(object):
