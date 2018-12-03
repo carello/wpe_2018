@@ -89,3 +89,5 @@ video-file-state: using various libraries to provide file stats
 mypypy - decorator that takes arguements.
 
 meeting-rooms : program to add meeting rooms and check for dates.
+
+loan-interest : loan interest program
