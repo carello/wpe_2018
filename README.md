@@ -91,3 +91,5 @@ mypypy - decorator that takes arguements.
 meeting-rooms : program to add meeting rooms and check for dates.
 
 loan-interest : loan interest program
+
+enum-cards: using Enum with cards example
